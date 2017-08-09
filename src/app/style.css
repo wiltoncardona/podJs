@@ -1,0 +1,36 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+}
+
+body section ,body header    {
+    margin: 1em;
+    padding: 1em;
+}
+
+footer {
+   position:fixed;
+   padding: 1em;
+   bottom:0;
+   height:10em;
+   width:100%;
+   background:#999;
+   
+}
+
+nav {       
+  background-color:  #aaa;
+  margin: 0;
+  padding: 2em;
+  width: 100%;
+  
+}
+nav ul li {
+    display: inline-block;
+}
+
+nav > ul > li > a {           
+    padding: 0 24px;
+}
+
