@@ -111,10 +111,12 @@ var App = function () {
     value: function init() {
       var _this = this;
 
-      console.log('runnig!');
-      //this.loadData();
+      console.log('Application loaded at ' + Date.now());
       //register router
+      this.router.route(event);
+
       window.addEventListener("hashchange", function (event) {
+        console.log('hashchange');
         _this.router.route(event);
       });
     }

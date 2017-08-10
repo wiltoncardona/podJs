@@ -6,10 +6,12 @@ class App {
     this.router =  new AppRouter();
   };
   init() {
-    console.log('runnig!');
-    //this.loadData();
+    console.log('Application loaded at ' + Date.now());
     //register router
+    this.router.route(event);
+    
     window.addEventListener("hashchange",(event)=>{
+          console.log('hashchange');
           this.router.route(event);
     });
    
