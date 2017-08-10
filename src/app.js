@@ -12,8 +12,8 @@ class App {
   }
 
   loadData(){
-   let data = this.storage.getItems();
-   data.team.forEach((element)=>{
+   let team = this.storage.getTeamMembers();
+   team.forEach((element)=>{
       let view = new View(element);
        view.render(this.el);
    });

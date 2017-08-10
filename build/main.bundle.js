@@ -97,8 +97,8 @@ var App = function () {
     value: function loadData() {
       var _this = this;
 
-      var data = this.storage.getItems();
-      data.team.forEach(function (element) {
+      var team = this.storage.getTeamMembers();
+      team.forEach(function (element) {
         var view = new _view.View(element);
         view.render(_this.el);
       });
@@ -172,7 +172,7 @@ var StorageService = exports.StorageService = function () {
     function StorageService() {
         _classCallCheck(this, StorageService);
 
-        this.team = new Object({
+        this.infoApp = new Object({
             team: [{
                 id: 2,
                 firstName: 'Jack',
@@ -195,15 +195,51 @@ var StorageService = exports.StorageService = function () {
                 role: 'owner',
                 photoUrl: 'https://vignette2.wikia.nocookie.net/southpark/images/a/a7/StanMarsh.png/revision/latest?cb=20160918033335'
             }],
-            mision: "",
-            vision: ""
+            mision: "WE WANT TO CHALLENGE THE STATUS QUO AND BECOME THE BEST COMPANY IN THE CREATION OF DIGITAL JOURNEYS, COMBINING THE BEST OF ENGINEERING, INNOVATION AND DESIGN.",
+            vision: "AT GLOBANT. The best engineers team up with our art design studios and innovation labs to deliver a superb user experience through innovation, usability, scalability and availability",
+            goald: "Our goal is to be the leader in the creation of digital journeys that matter to millions of users."
         });
+        this.saveData();
     }
 
     _createClass(StorageService, [{
-        key: 'getItems',
-        value: function getItems() {
-            return this.team;
+        key: 'saveData',
+        value: function saveData() {
+            console.log("Saving data");
+            // Check browser support
+            if (typeof Storage !== "undefined") {
+                localStorage.setItem("team", JSON.stringify(this.infoApp.team));
+                localStorage.setItem("mision", JSON.stringify(this.infoApp.mision));
+                localStorage.setItem("vision", JSON.stringify(this.infoApp.vision));
+                localStorage.setItem("goald", JSON.stringify(this.infoApp.goald));
+            } else {
+                document.getElementsByClassName("error").innerHTML = "Sorry, your browser does not support Web Storage...";
+            }
+        }
+    }, {
+        key: 'getTeamMembers',
+        value: function getTeamMembers() {
+            return this.getItem('team');
+        }
+    }, {
+        key: 'getMision',
+        value: function getMision() {
+            return this.getItem('mision');
+        }
+    }, {
+        key: 'getVision',
+        value: function getVision() {
+            return this.getItem('vision');
+        }
+    }, {
+        key: 'getGoald',
+        value: function getGoald() {
+            return this.getItem('goald');
+        }
+    }, {
+        key: 'getItem',
+        value: function getItem(name) {
+            return JSON.parse(window.localStorage.getItem(name));
         }
     }]);
 
