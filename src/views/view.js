@@ -1,10 +1,9 @@
 import { control } from './podmember';
 
 export class View {
-  constructor() {
-    this.el = document.getElementById('target');
+  constructor() {    
   }
-  render() {
-    this.el.innerHTML = control();
+  render(element) {
+    element.appendChild(control());
   }
 }

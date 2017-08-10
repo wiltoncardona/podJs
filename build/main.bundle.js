@@ -80,14 +80,17 @@ var App = function () {
   function App() {
     _classCallCheck(this, App);
 
-    this.view = new _view.View();
+    this.el = document.getElementById('target');
   }
 
   _createClass(App, [{
     key: 'init',
     value: function init() {
       console.log('runnig!');
-      this.view.render();
+      for (var index = 0; index < 5; index++) {
+        var view = new _view.View();
+        view.render(this.el);
+      }
     }
   }]);
 
@@ -121,14 +124,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var View = exports.View = function () {
   function View() {
     _classCallCheck(this, View);
-
-    this.el = document.getElementById('target');
   }
 
   _createClass(View, [{
     key: 'render',
-    value: function render() {
-      this.el.innerHTML = (0, _podmember.control)();
+    value: function render(element) {
+      element.appendChild((0, _podmember.control)());
     }
   }]);
 
@@ -148,7 +149,10 @@ Object.defineProperty(exports, "__esModule", {
 
 var control = function control() {
 
-    return "\n         <div>\n          <img class=\"img-circle\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==\" alt=\"Generic placeholder image\" width=\"140\" height=\"140\">\n          <h2>Heading</h2>\n          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>\n          <p><a class=\"btn btn-default\" href=\"#\" role=\"button\">View details \xBB</a></p>\n        </div>\n    ";
+    var div = document.createElement('div');
+    div.innerHTML = '\n         <div>\n          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">\n          <h2>Heading</h2>\n          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>\n          <p><a class="btn btn-default" href="#" role="button">View details \xBB</a></p>\n        </div>\n    ';
+
+    return div;
 };
 
 exports.control = control;

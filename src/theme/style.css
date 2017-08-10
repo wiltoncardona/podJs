@@ -15,12 +15,12 @@ footer {
    bottom:0;
    height:10em;
    width:100%;
-   background:#999;
+   background:#1a6ecc;
    
 }
 
 nav {       
-  background-color:  #aaa;
+  background-color:  #1a6ecc;
   margin: 0;
   padding: 2em;
   width: 100%;
@@ -30,7 +30,20 @@ nav ul li {
     display: inline-block;
 }
 
-nav > ul > li > a {           
-    padding: 0 24px;
+li > a {           
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    color: #ffffff;
+    line-height: 21px;
+}
+
+a {
+    text-decoration: none;
+    background-color: transparent;
+}
+
+body > section {
+    display: inline-flex;
 }
 

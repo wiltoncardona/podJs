@@ -1,7 +1,8 @@
 
 const  control = ()=> {
 
-    return `
+    let div = document.createElement('div');
+    div.innerHTML = `
          <div>
           <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
           <h2>Heading</h2>
@@ -9,6 +10,8 @@ const  control = ()=> {
           <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
         </div>
     `
+
+    return div;
 
 }
 
