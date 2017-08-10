@@ -1,0 +1,42 @@
+
+export class StorageService {   
+    
+    constructor(){
+        this.team = new Object({
+            team: [
+                    {
+                    id: 2,
+                    firstName: 'Jack',
+                    lastName: 'Sprout',
+                    email: 'jack.sprout@gmail.com',
+                    role: 'owner',
+                    photoUrl: 'http://cdn.20m.es/img2/recortes/2012/06/26/66866-640-360.jpg'
+                    },
+                    {
+                    id: 2,
+                    firstName: 'Kenny ',
+                    lastName: 'McCormick',
+                    email: 'jack.sprout@gmail.com',
+                    role: 'owner',
+                    photoUrl: 'https://vignette2.wikia.nocookie.net/southpark/images/6/6f/KennyMcCormick.png/revision/latest?cb=20160409020502'
+                    },
+                    {
+                    id: 2,
+                    firstName: 'Stan ',
+                    lastName: 'Marsh',
+                    email: 'jack.sprout@gmail.com',
+                    role: 'owner',
+                    photoUrl: 'https://vignette2.wikia.nocookie.net/southpark/images/a/a7/StanMarsh.png/revision/latest?cb=20160918033335'
+                    }
+                ],
+            mision: "",
+            vision: ""
+        })
+    }
+    
+
+    getItems(){
+       return this.team;
+    }
+
+}

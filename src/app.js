@@ -1,18 +1,24 @@
 import { View } from './views/view';
+import { StorageService  } from './util/serviceLocalStorage'
 
 class App {
   constructor() {
     this.el = document.getElementById('target');
+    this.storage = new StorageService();
   };
   init() {
     console.log('runnig!');
-    for (var index = 0; index < 5; index++) {
-       let view = new View();
+    this.loadData();
+  }
+
+  loadData(){
+   let data = this.storage.getItems();
+   data.team.forEach((element)=>{
+      let view = new View(element);
        view.render(this.el);
-      
-    }
+   });
     
-  };
+  }
 }
 
 

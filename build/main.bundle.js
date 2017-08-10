@@ -74,6 +74,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _view = __webpack_require__(1);
 
+var _serviceLocalStorage = __webpack_require__(2);
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var App = function () {
@@ -81,16 +83,25 @@ var App = function () {
     _classCallCheck(this, App);
 
     this.el = document.getElementById('target');
+    this.storage = new _serviceLocalStorage.StorageService();
   }
 
   _createClass(App, [{
     key: 'init',
     value: function init() {
       console.log('runnig!');
-      for (var index = 0; index < 5; index++) {
-        var view = new _view.View();
-        view.render(this.el);
-      }
+      this.loadData();
+    }
+  }, {
+    key: 'loadData',
+    value: function loadData() {
+      var _this = this;
+
+      var data = this.storage.getItems();
+      data.team.forEach(function (element) {
+        var view = new _view.View(element);
+        view.render(_this.el);
+      });
     }
   }]);
 
@@ -98,7 +109,6 @@ var App = function () {
 }();
 
 var app = new App();
-
 window.addEventListener('load', function () {
   return app.init();
 });
@@ -113,23 +123,30 @@ window.addEventListener('load', function () {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.View = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _podmember = __webpack_require__(2);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var View = exports.View = function () {
-  function View() {
+  function View(dataMember) {
     _classCallCheck(this, View);
+
+    this.member = dataMember;
   }
 
   _createClass(View, [{
+    key: 'init',
+    value: function init() {
+      var div = document.createElement('div');
+      div.innerHTML = '\n         <div>\n          <img class="img-circle" src="' + this.member.photoUrl + '" alt="Generic placeholder image" width="140" height="140">\n          <h2>' + this.member.firstName + ' ' + this.member.lastName + ' </h2>\n          <p><strong>Email:</strong>  ' + this.member.email + '</p> \n          <h4>Role</h4>\n          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>\n          <p><a class="btn btn-default" href="#" role="button">View details \xBB</a></p>\n        </div>\n    ';
+
+      return div;
+    }
+  }, {
     key: 'render',
     value: function render(element) {
-      element.appendChild((0, _podmember.control)());
+      element.appendChild(this.init());
     }
   }]);
 
@@ -147,15 +164,51 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var control = function control() {
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-    var div = document.createElement('div');
-    div.innerHTML = '\n         <div>\n          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">\n          <h2>Heading</h2>\n          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>\n          <p><a class="btn btn-default" href="#" role="button">View details \xBB</a></p>\n        </div>\n    ';
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-    return div;
-};
+var StorageService = exports.StorageService = function () {
+    function StorageService() {
+        _classCallCheck(this, StorageService);
 
-exports.control = control;
+        this.team = new Object({
+            team: [{
+                id: 2,
+                firstName: 'Jack',
+                lastName: 'Sprout',
+                email: 'jack.sprout@gmail.com',
+                role: 'owner',
+                photoUrl: 'http://cdn.20m.es/img2/recortes/2012/06/26/66866-640-360.jpg'
+            }, {
+                id: 2,
+                firstName: 'Kenny ',
+                lastName: 'McCormick',
+                email: 'jack.sprout@gmail.com',
+                role: 'owner',
+                photoUrl: 'https://vignette2.wikia.nocookie.net/southpark/images/6/6f/KennyMcCormick.png/revision/latest?cb=20160409020502'
+            }, {
+                id: 2,
+                firstName: 'Stan ',
+                lastName: 'Marsh',
+                email: 'jack.sprout@gmail.com',
+                role: 'owner',
+                photoUrl: 'https://vignette2.wikia.nocookie.net/southpark/images/a/a7/StanMarsh.png/revision/latest?cb=20160918033335'
+            }],
+            mision: "",
+            vision: ""
+        });
+    }
+
+    _createClass(StorageService, [{
+        key: 'getItems',
+        value: function getItems() {
+            return this.team;
+        }
+    }]);
+
+    return StorageService;
+}();
 
 /***/ })
 /******/ ]);
