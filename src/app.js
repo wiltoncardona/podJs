@@ -1,14 +1,23 @@
 import { View } from './views/view';
 import { StorageService  } from './util/serviceLocalStorage'
 
+import { AppRouter } from './appRouter';
+
+
 class App {
   constructor() {
     this.el = document.getElementById('target');
     this.storage = new StorageService();
+    this.router =  new AppRouter();
   };
   init() {
     console.log('runnig!');
-    this.loadData();
+    //this.loadData();
+    //register router
+    window.addEventListener("hashchange",(event)=>{
+          this.router.route(event);
+    });
+   
   }
 
   loadData(){
@@ -19,8 +28,10 @@ class App {
    });
     
   }
+
 }
 
 
 const app = new App();
 window.addEventListener('load', () => app.init());
+
