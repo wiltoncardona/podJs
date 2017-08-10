@@ -1,0 +1,29 @@
+{
+  "name": "podjs",
+  "version": "1.0.0",
+  "description": "PodJs Bootcamps!\r This project was generated with Vanilla JavaScript ES6",
+  "main": "index.js",
+  "scripts": {
+    "babel": "babel --presets es2015 src/app.js -o build/main.bundle.js",
+    "start": "http-server",
+    "webpack": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wiltoncardona/podJs.git"
+  },
+  "author": "@faltdor",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/wiltoncardona/podJs/issues"
+  },
+  "homepage": "https://github.com/wiltoncardona/podJs#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-loader": "^7.1.1",
+    "babel-preset-es2015": "^6.24.1",
+    "http-server": "^0.10.0",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.5.2"
+  }
+}
