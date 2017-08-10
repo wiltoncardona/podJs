@@ -60,11 +60,229 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var removeChild = exports.removeChild = function removeChild() {
+    var el = document.getElementById('target');
+    while (el.firstChild) {
+        //The list is LIVE so it will re-index each call
+        el.removeChild(el.firstChild);
+    }
+};
+
+var render = exports.render = function render(data) {
+    var el = document.getElementById('target');
+    el.appendChild(data);
+};
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _appRouter = __webpack_require__(2);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var App = function () {
+  function App() {
+    _classCallCheck(this, App);
+
+    this.router = new _appRouter.AppRouter();
+  }
+
+  _createClass(App, [{
+    key: 'init',
+    value: function init() {
+      var _this = this;
+
+      console.log('runnig!');
+      //this.loadData();
+      //register router
+      window.addEventListener("hashchange", function (event) {
+        _this.router.route(event);
+      });
+    }
+  }]);
+
+  return App;
+}();
+
+var app = new App();
+window.addEventListener('load', function () {
+  return app.init();
+});
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.AppRouter = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _homeController = __webpack_require__(3);
+
+var _podTeamController = __webpack_require__(5);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var AppRouter = exports.AppRouter = function () {
+    function AppRouter() {
+        _classCallCheck(this, AppRouter);
+    }
+
+    _createClass(AppRouter, [{
+        key: 'route',
+        value: function route(event) {
+            var route = location.hash.slice(1) || 'home';
+            console.log(route);
+
+            var temp = route.split('?');
+            console.log(temp);
+            //var route_split = temp.length;
+            var function_to_invoke = temp[0] || false;
+            var params = null;
+            //if(route_split > 1){
+            //   params  = extract_params(temp[1]);
+            //}
+
+            //fire 
+            if (function_to_invoke) {
+                switch (function_to_invoke) {
+                    case 'home':
+                        console.log('HomeController');
+                        (0, _homeController.HomeController)(function_to_invoke, params);
+                        break;
+                    case 'podteam':
+                        (0, _podTeamController.PodTeamController)(function_to_invoke, params);
+                        break;
+                    case 'mision':
+                        console.log('Bananas are $0.48 a pound.');
+                        break;
+                    case 'goals':
+                        console.log('Cherries are $3.00 a pound.');
+                        break;
+                    default:
+                        console.log('Sorry, we are out of ' + expr + '.');
+                }
+            }
+        }
+    }]);
+
+    return AppRouter;
+}();
+
+;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.HomeController = undefined;
+
+var _home = __webpack_require__(4);
+
+var _utils = __webpack_require__(0);
+
+var HomeController = exports.HomeController = function HomeController(data, params) {
+    var home = new _home.Home();
+    (0, _utils.removeChild)();
+    (0, _utils.render)(home.init());
+};
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Home = exports.Home = function () {
+  function Home() {
+    _classCallCheck(this, Home);
+  }
+
+  _createClass(Home, [{
+    key: 'init',
+    value: function init() {
+      var div = document.createElement('header');
+      div.innerHTML = '     \n            <h1>Welcom to My PodJs!</h1>\n            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe expedita doloribus, praesentium laboriosam. Vero non eius enim, vel sunt, facere voluptates hic omnis iure consequuntur itaque impedit ipsa. Esse, exercitationem!</p>\n\n        \n    ';
+
+      return div;
+    }
+  }]);
+
+  return Home;
+}();
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.PodTeamController = undefined;
+
+var _view = __webpack_require__(6);
+
+var _utils = __webpack_require__(0);
+
+var _serviceLocalStorage = __webpack_require__(7);
+
+var PodTeamController = exports.PodTeamController = function PodTeamController(data, params) {
+
+    var storage = new _serviceLocalStorage.StorageService();
+    var team = storage.getTeamMembers();
+
+    (0, _utils.removeChild)();
+    team.forEach(function (element) {
+        var view = new _view.View(element);
+        (0, _utils.render)(view.init());
+    });
+};
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -104,7 +322,7 @@ var View = exports.View = function () {
 }();
 
 /***/ }),
-/* 1 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -195,241 +413,6 @@ var StorageService = exports.StorageService = function () {
 
     return StorageService;
 }();
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var removeChild = exports.removeChild = function removeChild() {
-    var el = document.getElementById('target');
-    while (el.firstChild) {
-        //The list is LIVE so it will re-index each call
-        el.removeChild(el.firstChild);
-    }
-};
-
-var render = exports.render = function render(data) {
-    var el = document.getElementById('target');
-    el.appendChild(data);
-};
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _view = __webpack_require__(0);
-
-var _serviceLocalStorage = __webpack_require__(1);
-
-var _appRouter = __webpack_require__(4);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var App = function () {
-  function App() {
-    _classCallCheck(this, App);
-
-    this.el = document.getElementById('target');
-    this.storage = new _serviceLocalStorage.StorageService();
-    this.router = new _appRouter.AppRouter();
-  }
-
-  _createClass(App, [{
-    key: 'init',
-    value: function init() {
-      var _this = this;
-
-      console.log('runnig!');
-      //this.loadData();
-      //register router
-      window.addEventListener("hashchange", function (event) {
-        _this.router.route(event);
-      });
-    }
-  }, {
-    key: 'loadData',
-    value: function loadData() {
-      var _this2 = this;
-
-      var team = this.storage.getTeamMembers();
-      team.forEach(function (element) {
-        var view = new _view.View(element);
-        view.render(_this2.el);
-      });
-    }
-  }]);
-
-  return App;
-}();
-
-var app = new App();
-window.addEventListener('load', function () {
-  return app.init();
-});
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.AppRouter = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _homeController = __webpack_require__(5);
-
-var _podTeamController = __webpack_require__(7);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var AppRouter = exports.AppRouter = function () {
-    function AppRouter() {
-        _classCallCheck(this, AppRouter);
-    }
-
-    _createClass(AppRouter, [{
-        key: 'route',
-        value: function route(event) {
-            var route = location.hash.slice(1) || 'home';
-            console.log(route);
-
-            var temp = route.split('?');
-            console.log(temp);
-            //var route_split = temp.length;
-            var function_to_invoke = temp[0] || false;
-            var params = null;
-            //if(route_split > 1){
-            //   params  = extract_params(temp[1]);
-            //}
-
-            //fire 
-            if (function_to_invoke) {
-                switch (function_to_invoke) {
-                    case 'home':
-                        console.log('HomeController');
-                        (0, _homeController.HomeController)(function_to_invoke, params);
-                        break;
-                    case 'podteam':
-                        (0, _podTeamController.PodTeamController)(function_to_invoke, params);
-                        break;
-                    case 'mision':
-                        console.log('Bananas are $0.48 a pound.');
-                        break;
-                    case 'goals':
-                        console.log('Cherries are $3.00 a pound.');
-                        break;
-                    default:
-                        console.log('Sorry, we are out of ' + expr + '.');
-                }
-            }
-        }
-    }]);
-
-    return AppRouter;
-}();
-
-;
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.HomeController = undefined;
-
-var _home = __webpack_require__(6);
-
-var _utils = __webpack_require__(2);
-
-var HomeController = exports.HomeController = function HomeController(data, params) {
-    var home = new _home.Home();
-    (0, _utils.removeChild)();
-    (0, _utils.render)(home.init());
-};
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Home = exports.Home = function () {
-  function Home() {
-    _classCallCheck(this, Home);
-  }
-
-  _createClass(Home, [{
-    key: 'init',
-    value: function init() {
-      var div = document.createElement('header');
-      div.innerHTML = ' \n      \n            <h1>Welcom to My PodJs!</h1>\n            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe expedita doloribus, praesentium laboriosam. Vero non eius enim, vel sunt, facere voluptates hic omnis iure consequuntur itaque impedit ipsa. Esse, exercitationem!</p>\n\n        \n    ';
-
-      return div;
-    }
-  }]);
-
-  return Home;
-}();
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.PodTeamController = undefined;
-
-var _view = __webpack_require__(0);
-
-var _utils = __webpack_require__(2);
-
-var _serviceLocalStorage = __webpack_require__(1);
-
-var PodTeamController = exports.PodTeamController = function PodTeamController(data, params) {
-
-    var storage = new _serviceLocalStorage.StorageService();
-    var team = storage.getTeamMembers();
-
-    (0, _utils.removeChild)();
-    team.forEach(function (element) {
-        var view = new _view.View(element);
-        (0, _utils.render)(view.init());
-    });
-};
 
 /***/ })
 /******/ ]);

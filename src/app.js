@@ -1,13 +1,8 @@
-import { View } from './views/view';
-import { StorageService  } from './util/serviceLocalStorage'
-
 import { AppRouter } from './appRouter';
 
 
 class App {
   constructor() {
-    this.el = document.getElementById('target');
-    this.storage = new StorageService();
     this.router =  new AppRouter();
   };
   init() {
@@ -19,16 +14,6 @@ class App {
     });
    
   }
-
-  loadData(){
-   let team = this.storage.getTeamMembers();
-   team.forEach((element)=>{
-      let view = new View(element);
-       view.render(this.el);
-   });
-    
-  }
-
 }
 
 
