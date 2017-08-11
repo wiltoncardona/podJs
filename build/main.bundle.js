@@ -162,13 +162,12 @@ var AppRouter = exports.AppRouter = function () {
             console.log(route);
 
             var temp = route.split('?');
-            console.log(temp);
-            //var route_split = temp.length;
+            var route_split = temp.length;
             var function_to_invoke = temp[0] || false;
             var params = null;
-            //if(route_split > 1){
-            //   params  = extract_params(temp[1]);
-            //}
+            if (route_split > 1) {
+                params = this.extract_params(temp[1]);
+            }
 
             //fire 
             if (function_to_invoke) {
@@ -190,6 +189,20 @@ var AppRouter = exports.AppRouter = function () {
                         console.log('Sorry, we are out of ' + expr + '.');
                 }
             }
+        }
+    }, {
+        key: 'extract_params',
+        value: function extract_params(params_string) {
+            var params = {};
+            var raw_params = params_string.split('&') || [];
+            console.log(raw_params);
+            var j = 0;
+
+            raw_params.forEach(function (element) {
+                var url_params = element.split('=');
+                params[url_params[0]] = url_params[1];
+            });
+            return params;
         }
     }]);
 
@@ -276,17 +289,26 @@ var _serviceLocalStorage = __webpack_require__(7);
 var PodTeamController = exports.PodTeamController = function PodTeamController(data, params) {
 
     var storage = new _serviceLocalStorage.StorageService();
-    var team = storage.getTeamMembers();
     var teamPod = new _teamPods.TeamPod();
-
     (0, _utils.removeChild)();
-    teamPod.addTeamMembers(team);
-    (0, _utils.render)(teamPod.getTeam());
-    /*renderAppend(teamPod.getTeam());
-      team.forEach((element)=>{
-        let view = new View(element);
-        render(view.init()) ;   
-    }); */
+
+    if (params && params['id']) {
+        var member = storage.findMember(params['id'])[0];
+        if (!member) {
+            (0, _utils.render)(teamPod.error());
+            return;
+        }
+        (0, _utils.render)(teamPod.fullPerson(member));
+    } else {
+        var team = storage.getTeamMembers();
+        teamPod.addTeamMembers(team);
+        (0, _utils.render)(teamPod.getTeam());
+        /*renderAppend(teamPod.getTeam());
+          team.forEach((element)=>{
+            let view = new View(element);
+            render(view.init()) ;   
+        }); */
+    }
 };
 
 /***/ }),
@@ -315,7 +337,7 @@ var View = exports.View = function () {
     key: 'init',
     value: function init() {
       var div = document.createElement('div');
-      div.innerHTML = '         \n          <img class="img-circle" src="' + this.member.photoUrl + '" alt="Generic placeholder image" width="140" height="140">\n          <h2>' + this.member.firstName + ' ' + this.member.lastName + ' </h2>\n          <p><strong>Email:</strong>  ' + this.member.email + '</p> \n          <h4>Role</h4>\n          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>\n          <p><a class="btn-link" href="#podteam?' + this.member.id + '" role="button">View details \xBB</a></p>\n        \n    ';
+      div.innerHTML = '         \n          <img class="img-circle" src="' + this.member.photoUrl + '" alt="Generic placeholder image" width="140" height="140">\n          <h2>' + this.member.firstName + ' ' + this.member.lastName + ' </h2>\n          <p><strong>Email:</strong>  ' + this.member.email + '</p> \n          <h4>Role</h4>\n          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>\n          <p><a class="btn-link" href="#podteam?id=' + this.member.id + '" role="button">View details \xBB</a></p>\n        \n    ';
 
       return div;
     }
@@ -357,21 +379,21 @@ var StorageService = exports.StorageService = function () {
                 role: 'owner',
                 photoUrl: 'http://cdn.20m.es/img2/recortes/2012/06/26/66866-640-360.jpg'
             }, {
-                id: 2,
+                id: 32,
                 firstName: 'Kenny ',
                 lastName: 'McCormick',
                 email: 'jack.sprout@gmail.com',
                 role: 'owner',
                 photoUrl: 'https://vignette2.wikia.nocookie.net/southpark/images/6/6f/KennyMcCormick.png/revision/latest?cb=20160409020502'
             }, {
-                id: 2,
+                id: 22,
                 firstName: 'Stan ',
                 lastName: 'Marsh',
                 email: 'jack.sprout@gmail.com',
                 role: 'owner',
                 photoUrl: 'https://vignette2.wikia.nocookie.net/southpark/images/a/a7/StanMarsh.png/revision/latest?cb=20160918033335'
             }, {
-                id: 2,
+                id: 42,
                 firstName: 'Stan ',
                 lastName: 'Marsh',
                 email: 'jack.sprout@gmail.com',
@@ -424,6 +446,15 @@ var StorageService = exports.StorageService = function () {
         value: function getItem(name) {
             return JSON.parse(window.localStorage.getItem(name));
         }
+    }, {
+        key: 'findMember',
+        value: function findMember(id) {
+            var members = this.getTeamMembers() || [];
+            console.log(members);
+            return members.filter(function (person) {
+                return person.id == id;
+            });
+        }
     }]);
 
     return StorageService;
@@ -472,6 +503,24 @@ var TeamPod = exports.TeamPod = function () {
         div.appendChild(view.init());
       });
       this.div.append(div);
+    }
+  }, {
+    key: 'fullPerson',
+    value: function fullPerson(member) {
+      console.log(member.photoUrl);
+      var div = document.createElement('div');
+      div.className = 'team-full';
+      div.innerHTML = ' \n          <div> \n            <img class="img-circle" src="' + member.photoUrl + '" alt="Generic placeholder image" width="140" height="140">\n          </div>\n          <div>\n            <h2>' + member.firstName + ' ' + member.lastName + ' </h2>\n            <br/>\n            <p><strong>Email:</strong>  ' + member.email + '</p> \n            <br/>\n            <h4>Role</h4>\n            <br/>\n            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>\n            <br/>\n            <h4>Goals</h4>\n            <br/>\n            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>\n          </div>\n    ';
+
+      return div;
+    }
+  }, {
+    key: 'error',
+    value: function error() {
+      var div = document.createElement('div');
+      div.innerHTML = '         \n          \n          <h4> The user doesn\xB4t Exist!!!!!</h4>\n          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>\n          \n        \n    ';
+
+      return div;
     }
   }, {
     key: 'getTeam',

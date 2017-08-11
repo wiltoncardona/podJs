@@ -60,7 +60,7 @@ a {
     background-color: transparent;
 }
 
-.team-members {
+.team-members , .team-full {
     display: inline-flex;
 }
 
@@ -68,14 +68,12 @@ section > div img {
     border-radius: 50%;
 }
 
-
 .text-center {
     text-align: center;
 }
 
 
 .title {
-    /* background-color: red; */
     padding-bottom: 2em;
     font-size: 1.5em;
 }
@@ -101,15 +99,25 @@ nav a:hover {
 }
 
 
- .btn-link {
-    display: inline-block;
-    
+.btn-link {
+    display: inline-block;    
     padding: 8px 12px;
     font-size: 14px;
     line-height: 1.42857143;
-   
-    
+    color: #ffffff;    
+}
 
-        color: #ffffff;
-    
+.team-full{
+    padding: 3em;
+}
+
+.team-full div:first-child {
+       margin: 3em 3em;
+}
+
+
+
+.team-full > div img {
+     border-radius: 0%; 
+
 }

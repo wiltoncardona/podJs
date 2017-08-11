@@ -13,7 +13,7 @@ export class StorageService {
                     photoUrl: 'http://cdn.20m.es/img2/recortes/2012/06/26/66866-640-360.jpg'
                     },
                     {
-                    id: 2,
+                    id:32,
                     firstName: 'Kenny ',
                     lastName: 'McCormick',
                     email: 'jack.sprout@gmail.com',
@@ -21,7 +21,7 @@ export class StorageService {
                     photoUrl: 'https://vignette2.wikia.nocookie.net/southpark/images/6/6f/KennyMcCormick.png/revision/latest?cb=20160409020502'
                     },
                     {
-                    id: 2,
+                    id: 22,
                     firstName: 'Stan ',
                     lastName: 'Marsh',
                     email: 'jack.sprout@gmail.com',
@@ -30,7 +30,7 @@ export class StorageService {
                     }
                 ,
                     {
-                    id: 2,
+                    id: 42,
                     firstName: 'Stan ',
                     lastName: 'Marsh',
                     email: 'jack.sprout@gmail.com',
@@ -74,6 +74,12 @@ export class StorageService {
 
     getItem(name){
         return JSON.parse(window.localStorage.getItem(name));
+    }
+
+    findMember(id){ 
+        let  members = this.getTeamMembers() || [];
+        console.log(members);
+       return members.filter(person => person.id == id);
     }
 
 

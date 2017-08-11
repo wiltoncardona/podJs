@@ -10,13 +10,12 @@ export class AppRouter {
             console.log(route);
 
             let temp = route.split('?');
-             console.log(temp);
-            //var route_split = temp.length;
+            let route_split = temp.length;
             let function_to_invoke = temp[0] || false;
             let params = null;
-            //if(route_split > 1){
-              //   params  = extract_params(temp[1]);
-            //}
+            if(route_split > 1){
+               params  = this.extract_params(temp[1]);               
+            }
 
             //fire 
             if(function_to_invoke){
@@ -39,6 +38,20 @@ export class AppRouter {
                     }
             }
     }
+
+    extract_params(params_string){
+        let params = {};
+        let raw_params = params_string.split('&') || [];
+        console.log(raw_params);
+        let j = 0;
+
+        raw_params.forEach((element) =>{
+            let url_params = element.split('=');
+            params[url_params[0]] = url_params[1];
+
+        });
+        return params;
+    };
 
 
 };
