@@ -28,6 +28,15 @@ export class StorageService {
                     role: 'owner',
                     photoUrl: 'https://vignette2.wikia.nocookie.net/southpark/images/a/a7/StanMarsh.png/revision/latest?cb=20160918033335'
                     }
+                ,
+                    {
+                    id: 2,
+                    firstName: 'Stan ',
+                    lastName: 'Marsh',
+                    email: 'jack.sprout@gmail.com',
+                    role: 'owner',
+                    photoUrl: 'https://vignette2.wikia.nocookie.net/southpark/images/a/a7/StanMarsh.png/revision/latest?cb=20160918033335'
+                    }
                 ],
             mision: "WE WANT TO CHALLENGE THE STATUS QUO AND BECOME THE BEST COMPANY IN THE CREATION OF DIGITAL JOURNEYS, COMBINING THE BEST OF ENGINEERING, INNOVATION AND DESIGN.",
             vision: "AT GLOBANT. The best engineers team up with our art design studios and innovation labs to deliver a superb user experience through innovation, usability, scalability and availability",

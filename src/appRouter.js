@@ -1,5 +1,7 @@
 import { HomeController } from './controllers/homeController';
 import { PodTeamController } from './controllers/podTeamController';
+import { MisionVisionController } from './controllers/misionVisionController';
+
 
 export class AppRouter {
 
@@ -27,7 +29,7 @@ export class AppRouter {
                         PodTeamController(function_to_invoke,params);
                         break;
                     case 'mision':
-                        console.log('Bananas are $0.48 a pound.');
+                        MisionVisionController(function_to_invoke,params);
                         break;
                     case 'goals':
                         console.log('Cherries are $3.00 a pound.');

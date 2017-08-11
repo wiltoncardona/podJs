@@ -1,6 +1,5 @@
 import { AppRouter } from './appRouter';
 
-
 class App {
   constructor() {
     this.router =  new AppRouter();
@@ -9,16 +8,12 @@ class App {
     console.log('Application loaded at ' + Date.now());
     //register router
     this.router.route(event);
-    
     window.addEventListener("hashchange",(event)=>{
-          console.log('hashchange');
           this.router.route(event);
     });
    
   }
 }
-
-
 const app = new App();
 window.addEventListener('load', () => app.init());
 

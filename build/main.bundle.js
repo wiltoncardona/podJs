@@ -114,9 +114,7 @@ var App = function () {
       console.log('Application loaded at ' + Date.now());
       //register router
       this.router.route(event);
-
       window.addEventListener("hashchange", function (event) {
-        console.log('hashchange');
         _this.router.route(event);
       });
     }
@@ -147,6 +145,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _homeController = __webpack_require__(3);
 
 var _podTeamController = __webpack_require__(5);
+
+var _misionVisionController = __webpack_require__(9);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -181,7 +181,7 @@ var AppRouter = exports.AppRouter = function () {
                         (0, _podTeamController.PodTeamController)(function_to_invoke, params);
                         break;
                     case 'mision':
-                        console.log('Bananas are $0.48 a pound.');
+                        (0, _misionVisionController.MisionVisionController)(function_to_invoke, params);
                         break;
                     case 'goals':
                         console.log('Cherries are $3.00 a pound.');
@@ -267,6 +267,8 @@ exports.PodTeamController = undefined;
 
 var _view = __webpack_require__(6);
 
+var _teamPods = __webpack_require__(8);
+
 var _utils = __webpack_require__(0);
 
 var _serviceLocalStorage = __webpack_require__(7);
@@ -275,12 +277,16 @@ var PodTeamController = exports.PodTeamController = function PodTeamController(d
 
     var storage = new _serviceLocalStorage.StorageService();
     var team = storage.getTeamMembers();
+    var teamPod = new _teamPods.TeamPod();
 
     (0, _utils.removeChild)();
-    team.forEach(function (element) {
-        var view = new _view.View(element);
-        (0, _utils.render)(view.init());
-    });
+    teamPod.addTeamMembers(team);
+    (0, _utils.render)(teamPod.getTeam());
+    /*renderAppend(teamPod.getTeam());
+      team.forEach((element)=>{
+        let view = new View(element);
+        render(view.init()) ;   
+    }); */
 };
 
 /***/ }),
@@ -309,7 +315,7 @@ var View = exports.View = function () {
     key: 'init',
     value: function init() {
       var div = document.createElement('div');
-      div.innerHTML = '\n         <div>\n          <img class="img-circle" src="' + this.member.photoUrl + '" alt="Generic placeholder image" width="140" height="140">\n          <h2>' + this.member.firstName + ' ' + this.member.lastName + ' </h2>\n          <p><strong>Email:</strong>  ' + this.member.email + '</p> \n          <h4>Role</h4>\n          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>\n          <p><a class="btn btn-default" href="#" role="button">View details \xBB</a></p>\n        </div>\n    ';
+      div.innerHTML = '         \n          <img class="img-circle" src="' + this.member.photoUrl + '" alt="Generic placeholder image" width="140" height="140">\n          <h2>' + this.member.firstName + ' ' + this.member.lastName + ' </h2>\n          <p><strong>Email:</strong>  ' + this.member.email + '</p> \n          <h4>Role</h4>\n          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>\n          <p><a class="btn btn-default" href="#podteam?' + this.member.id + '" role="button">View details \xBB</a></p>\n        \n    ';
 
       return div;
     }
@@ -357,6 +363,13 @@ var StorageService = exports.StorageService = function () {
                 email: 'jack.sprout@gmail.com',
                 role: 'owner',
                 photoUrl: 'https://vignette2.wikia.nocookie.net/southpark/images/6/6f/KennyMcCormick.png/revision/latest?cb=20160409020502'
+            }, {
+                id: 2,
+                firstName: 'Stan ',
+                lastName: 'Marsh',
+                email: 'jack.sprout@gmail.com',
+                role: 'owner',
+                photoUrl: 'https://vignette2.wikia.nocookie.net/southpark/images/a/a7/StanMarsh.png/revision/latest?cb=20160918033335'
             }, {
                 id: 2,
                 firstName: 'Stan ',
@@ -416,6 +429,116 @@ var StorageService = exports.StorageService = function () {
     return StorageService;
 }();
 
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.TeamPod = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _view = __webpack_require__(6);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var TeamPod = exports.TeamPod = function () {
+  function TeamPod() {
+    _classCallCheck(this, TeamPod);
+
+    this.div = document.createElement('div');
+
+    this.init();
+  }
+
+  _createClass(TeamPod, [{
+    key: 'init',
+    value: function init() {
+      this.div.innerHTML = '\n                <div class="title text-center">\n                  <h2 class="section-heading">Our Amazing Team</h2>\n                  <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>\n                </div>  \n    ';
+      return this.div;
+    }
+  }, {
+    key: 'addTeamMembers',
+    value: function addTeamMembers(team) {
+      var div = document.createElement('div');
+      div.className = 'team-members';
+      team.forEach(function (member) {
+        var view = new _view.View(member);
+        div.appendChild(view.init());
+      });
+      this.div.append(div);
+    }
+  }, {
+    key: 'getTeam',
+    value: function getTeam() {
+      return this.div;
+    }
+  }]);
+
+  return TeamPod;
+}();
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.MisionVisionController = undefined;
+
+var _misionVision = __webpack_require__(10);
+
+var _utils = __webpack_require__(0);
+
+var MisionVisionController = exports.MisionVisionController = function MisionVisionController(data, params) {
+    var misionVisionPod = new _misionVision.MisionVisionPod();
+    (0, _utils.removeChild)();
+    (0, _utils.render)(misionVisionPod.init());
+};
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var MisionVisionPod = exports.MisionVisionPod = function () {
+  function MisionVisionPod() {
+    _classCallCheck(this, MisionVisionPod);
+
+    this.section = document.createElement('section');
+    this.section.className = 'misionvision';
+    this.init();
+  }
+
+  _createClass(MisionVisionPod, [{
+    key: 'init',
+    value: function init() {
+      this.section.innerHTML = '\n\n                <div class="title text-center">\n                    <h1 class="blown-up">Our Vision</h1>\n                     \n                         <img src=" https://www.globant.com/sites/default/files/static-pages/node-104.jpg" alt="vision-mision">                        \n                    \n                </div>\n              \n                <div class="row cont">\n                    <h3 class="excerpt">WE WANT TO CHALLENGE THE STATUS QUO AND BECOME THE BEST COMPANY IN THE CREATION OF DIGITAL JOURNEYS, COMBINING THE BEST OF ENGINEERING, INNOVATION AND DESIGN.</h3>\n                    <p class="header-text">Our goal is to be the leader in the creation of digital journeys that matter to millions of users.</p>\n                </div>\n            \n               \n    ';
+      return this.section;
+    }
+  }]);
+
+  return MisionVisionPod;
+}();
+
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.bundle.js.map

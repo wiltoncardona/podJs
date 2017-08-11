@@ -9,21 +9,29 @@ body section ,body header    {
     padding: 1em;
 }
 
+section#target {
+    padding-bottom: 140px;
+}
+
 footer {
-   position:fixed;
-   padding: 1em;
-   bottom:0;
-   height:10em;
+   position:absolute;   
    width:100%;
-   background:#1a6ecc;
-   
+   height:100px;   
+   background:#6cf;
+   margin-bottom: 0;
+}
+
+footer.main-footer img {
+    display: block;   
+    height: auto;
+    margin: 0 auto 28px;
+    padding-top: 2em;
 }
 
 nav {       
   background-color:  #1a6ecc;
   margin: 0;
   padding: 2em;
-  width: 100%;
   
 }
 nav ul li {
@@ -43,7 +51,36 @@ a {
     background-color: transparent;
 }
 
-body > section {
+.team-members {
     display: inline-flex;
 }
 
+section > div img {
+    border-radius: 50%;
+}
+
+
+.text-center {
+    text-align: center;
+}
+
+
+.title {
+    /* background-color: red; */
+    padding-bottom: 2em;
+    font-size: 1.5em;
+}
+
+.team-members > div p {
+    font-size: 0.9em;
+}
+
+section.misionvision {
+    margin: 0 auto;
+    padding: 0;
+}
+
+section.misionvision > div img{
+    border-radius: 0;
+    width: 100%;
+}

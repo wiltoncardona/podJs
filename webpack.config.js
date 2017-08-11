@@ -1,5 +1,8 @@
 var path = require('path');
-var webpack = require('webpack');
+//var webpack = require('webpack');
+
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
  module.exports = {
      entry: './src/app.js',
@@ -10,6 +13,11 @@ var webpack = require('webpack');
      module: {
          loaders: [
              {
+                test: /\.css$/,
+                loader:  ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
+                
+            },
+            {
                  test: /\.js$/,
                  loader: 'babel-loader',
                  query: {
@@ -18,8 +26,14 @@ var webpack = require('webpack');
              }
          ]
      },
-     stats: {
-         colors: true
-     },
-     devtool: 'source-map'
+     plugins: [
+		new ExtractTextPlugin("src/theme/style.css"),
+	    new BrowserSyncPlugin({
+	        host: 'localhost',
+      		port: 3000,
+	        server: {baseDir: ['./']},
+	        files: ['./*']
+		}),
+	],
+	watch: true
  };
