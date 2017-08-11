@@ -17,10 +17,16 @@ export class MisionVisionPod {
                     
                 </div>
               
-                <div class="row cont">
+                <div class="text-center">
                     <h3 class="excerpt">WE WANT TO CHALLENGE THE STATUS QUO AND BECOME THE BEST COMPANY IN THE CREATION OF DIGITAL JOURNEYS, COMBINING THE BEST OF ENGINEERING, INNOVATION AND DESIGN.</h3>
                     <p class="header-text">Our goal is to be the leader in the creation of digital journeys that matter to millions of users.</p>
                 </div>
+                <br/>
+                <div>                    
+
+                </div>
+              
+               
             
                
     `

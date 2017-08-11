@@ -1,7 +1,14 @@
-body{
+* {
     margin: 0;
     padding: 0;
+}
+body{
+    
     font-size: 15px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.42857143;
+    color: #c8c8c8;
+    background-color: #272b30;
 }
 
 body section ,body header    {
@@ -10,14 +17,14 @@ body section ,body header    {
 }
 
 section#target {
-    padding-bottom: 140px;
+    padding-bottom: 27%;
 }
 
 footer {
    position:absolute;   
    width:100%;
    height:100px;   
-   background:#6cf;
+   background:#7a8288;
    margin-bottom: 0;
 }
 
@@ -29,9 +36,11 @@ footer.main-footer img {
 }
 
 nav {       
-  background-color:  #1a6ecc;
+  background-color:  #3a3f44;
   margin: 0;
   padding: 2em;
+  border: 1px solid rgba(0, 0, 0, 0.6);    
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   
 }
 nav ul li {
@@ -83,4 +92,24 @@ section.misionvision {
 section.misionvision > div img{
     border-radius: 0;
     width: 100%;
+}
+
+
+
+nav a:hover {
+    background-color: rgba(155, 0, 0, 0.6);
+}
+
+
+ .btn-link {
+    display: inline-block;
+    
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+   
+    
+
+        color: #ffffff;
+    
 }
