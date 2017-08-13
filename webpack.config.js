@@ -1,11 +1,9 @@
 var path = require('path');
-//var webpack = require('webpack');
-
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
  module.exports = {
-     entry: './src/app.js',
+     entry: './app/main.js',
      output: {
          path: path.resolve(__dirname, 'build'),
          filename: 'main.bundle.js'
@@ -27,7 +25,7 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
          ]
      },
      plugins: [
-		new ExtractTextPlugin("src/theme/style.css"),
+		new ExtractTextPlugin("app/theme/style.css"),
 	    new BrowserSyncPlugin({
 	        host: 'localhost',
       		port: 3000,

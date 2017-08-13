@@ -4,19 +4,19 @@
   "description": "PodJs Bootcamps!\r This project was generated with Vanilla JavaScript ES6",
   "main": "webpack.config.js",
   "scripts": {
-    "babel": "babel --presets es2015 src/app.js -o build/main.bundle.js",    
+    "babel": "babel --presets es2015 app/main.js -o build/main.bundle.js",    
     "webpack": "webpack"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wiltoncardona/podJs.git"
+    "url": ""
   },
   "author": "@faltdor",
   "license": "",
   "bugs": {
-    "url": "https://github.com/wiltoncardona/podJs/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/wiltoncardona/podJs#readme",
+  "homepage": "",
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
