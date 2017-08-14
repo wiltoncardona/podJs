@@ -155,6 +155,8 @@ var _person = __webpack_require__(9);
 
 var _misionVision = __webpack_require__(10);
 
+var _contactus = __webpack_require__(12);
+
 var app = new _app.App();
 var router = new _router.Router(app);
 
@@ -165,6 +167,7 @@ app.addComponent(new _home.Home());
 app.addComponent(new _team.Team());
 app.addComponent(new _person.Person());
 app.addComponent(new _misionVision.MisionVision());
+app.addComponent(new _contactus.ContactUs());
 
 router.addRoute('home', '^$');
 router.addRoute('home', '^#/home$');
@@ -173,6 +176,7 @@ router.addRoute('team', '^#/team$');
 router.addRoute('teamperson', '^#/team/([0-9]*)$');
 
 router.addRoute('misionVision', '^#/mision$');
+router.addRoute('contactus', '^#/contactus$');
 
 /***/ }),
 /* 3 */
@@ -337,7 +341,7 @@ var NavBar = exports.NavBar = function () {
     _createClass(NavBar, [{
         key: "view",
         value: function view() {
-            return "\n                <div class=\"container\" id=\"myTopnav\">\n                    <a href=\"index.html\" class=\"logo\">Globant PodsUI</a>\n                    <nav>\n                        <ul>\n                            <li> <a href=\"#/home\">Home</a></li>\n                            <li> <a href=\"#/team\">Pod Team</a></li>\n                            <li> <a href=\"#/mision\">Mision/vision</a></li> \n                            <li> <a href=\"#/goals\">Goals</a></li>                      \n                        </ul>                       \n                    </nav>\n                     <div class=\"icon-hamburger\" onclick=\"myFunction()\">&#9776;</div>\n                </div>\n           \n        \n         \n        ";
+            return "\n                <div class=\"container\" id=\"myTopnav\">\n                    <a href=\"index.html\" class=\"logo\">Globant PodsUI</a>\n                    <nav>\n                        <ul>\n                            <li> <a href=\"#/home\">Home</a></li>\n                            <li> <a href=\"#/team\">Pod Team</a></li>\n                            <li> <a href=\"#/mision\">Mision/vision</a></li> \n                            <li> <a href=\"#/goals\">Goals</a></li>  \n                            <li> <a href=\"#/contactus\">contactus</a></li>                      \n                        </ul>                       \n                    </nav>\n                     <div class=\"icon-hamburger\" onclick=\"myFunction()\">&#9776;</div>\n                </div>\n           \n        \n         \n        ";
         }
     }]);
 
@@ -596,6 +600,44 @@ Object.defineProperty(exports, "__esModule", {
 var misionVision = exports.misionVision = function misionVision() {
     return "\n       <div>\n        <section class=\"misionvision title text-center\">\n                <div>\n                    <h1 class=\"blown-up\">Our Vision</h1>\n                     \n                    <img src=\" https://www.globant.com/sites/default/files/static-pages/node-104.jpg\" alt=\"vision-mision\">                        \n                    \n                </div>\n              \n                <div class=\"text-center\">\n                    <h3 class=\"excerpt\">WE WANT TO CHALLENGE THE STATUS QUO AND BECOME THE BEST COMPANY IN THE CREATION OF DIGITAL JOURNEYS, COMBINING THE BEST OF ENGINEERING, INNOVATION AND DESIGN.</h3>\n                    <p class=\"header-text\">Our goal is to be the leader in the creation of digital journeys that matter to millions of users.</p>\n                </div>\n                <br/>                        \n\n        </section>\n        </div>\n    \n    ";
 };
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ContactUs = exports.ContactUs = function () {
+    function ContactUs() {
+        _classCallCheck(this, ContactUs);
+
+        this.name = 'contactus';
+        this.model = {
+            home: []
+        };
+    }
+
+    _createClass(ContactUs, [{
+        key: 'view',
+        value: function view() {
+            return '\n                <div class="container">\n                    <header>\n\t\t\t\t\t\t<h2>Get in Touch</h2>\n\t\t\t\t\t</header>\n                    <form action="">\n                        <label for="fname"> Name</label>\n                        <input type="text" id="fname" name="firstname" placeholder="Your name..">\n\n                        <label for="email">Email</label>\n                        <input type="text" id="email" name="lastname" placeholder="Your email..">\n\n                        <label for="message">Message</label>\n                        <textarea id="message" name="message" placeholder="Write something.." style="height:200px"></textarea>\n\n                        <input type="submit" value="Send Message">\n                    </form>\n                </div>\n\n        ';
+        }
+    }, {
+        key: 'controller',
+        value: function controller() {}
+    }]);
+
+    return ContactUs;
+}();
 
 /***/ })
 /******/ ]);

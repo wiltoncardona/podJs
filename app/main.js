@@ -7,9 +7,7 @@ import { Home } from './components/home/home';
 import { Team } from './components/team/team';
 import { Person } from './components/team/person/person';
 import { MisionVision } from './components/misionvision/misionVision';
-
-
-
+import { ContactUs } from './components/contactus/contactus';
 
 
 
@@ -23,6 +21,7 @@ app.addComponent(new Home());
 app.addComponent(new Team());
 app.addComponent(new Person());
 app.addComponent(new MisionVision());
+app.addComponent(new ContactUs());
 
 
 
@@ -35,5 +34,7 @@ router.addRoute('team', '^#/team$');
 router.addRoute('teamperson', '^#/team/([0-9]*)$');
 
 router.addRoute('misionVision', '^#/mision$');
+router.addRoute('contactus', '^#/contactus$');
+
 
 

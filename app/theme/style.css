@@ -109,6 +109,25 @@ content p {
 .team-members , .team-full {
     display: inline-flex;
 }
+#main  a.btn-link {
+    background-color: transparent;
+    box-shadow: inset 0 0 0 2px #e5474b;
+    color: #e5474b !important;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    border-radius: 0;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    font-size: .8em;
+    font-weight: 700;
+    height: 3.5em;
+    line-height: 3.65em;
+    padding: 0 2.25em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
 
 .team-members > div img {
     border-radius: 50%;
@@ -133,10 +152,6 @@ section.misionvision > div img{
     width: 100%;
 }
 
-
-
-
-
 #main-footer{
   background-color: #1c1c1c;  
   position: absolute;
@@ -147,6 +162,66 @@ section.misionvision > div img{
   text-align: center;
   display: none; /* mostrar footer*/
     
+}
+
+
+
+
+
+.contactus{
+    max-width: 65em;
+    width: calc(100% - 6em);
+    margin: 0 auto;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+
+}
+
+.contactus header {
+        margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+input[type=text], textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+input[type=submit] {
+    background-color: #e5474b;
+    color: #ffffff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #e5474b;
+    color: #ffffff !important;
+}
+
+label {
+    color: #e5474b !important;
+}
+
+#main .container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
 }
 
 
