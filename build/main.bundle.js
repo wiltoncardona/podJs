@@ -74,7 +74,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 var teamView = exports.teamView = function teamView(person) {
-    return "\n        <section> \n           <img class=\"img-circle\" src=\"" + person.photoUrl + "\" alt=\"Generic placeholder image\" width=\"140\" height=\"140\">\n          <h2>" + person.firstName + " " + person.lastName + " </h2>\n          <p><strong>Email:</strong>  " + person.email + "</p> \n          <h4>Role</h4>\n          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>\n          <p><a class=\"btn-link\" href=\"#/team/" + person.id + "\" role=\"button\">View details \xBB</a></p>\n        </section>\n    ";
+    return "\n        <div>\n            <section> \n            <img class=\"img-circle\" src=\"" + person.photoUrl + "\" alt=\"Generic placeholder image\" width=\"140\" height=\"140\">\n            <h2>" + person.firstName + " " + person.lastName + " </h2>\n            <p><strong>Email:</strong>  " + person.email + "</p> \n            <h4>Role</h4>\n            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>\n            <p><a class=\"btn-link\" href=\"#/team/" + person.id + "\" role=\"button\">View details \xBB</a></p>\n            </section>\n        </div>\n    ";
 };
 
 /***/ }),
@@ -193,7 +193,7 @@ var App = exports.App = function () {
     function App() {
         _classCallCheck(this, App);
 
-        this.navElement = document.getElementById('navbar');
+        this.navElement = document.getElementById('header');
         this.footerElement = document.getElementById('main-footer');
 
         this.appElement = document.getElementById('main');
@@ -337,12 +337,27 @@ var NavBar = exports.NavBar = function () {
     _createClass(NavBar, [{
         key: "view",
         value: function view() {
-            return "\n                <nav>\n                    <ul>\n                        <li> <a href=\"#/home\">Home</a></li>\n                        <li> <a href=\"#/team\">Pod Team</a></li>\n                        <li> <a href=\"#/mision\">Mision/vision</a></li> \n                        <li> <a href=\"#/goals\">Goals</a></li>                      \n                    </ul>\n                </nav>\n        \n        \n        ";
+            return "\n                <div class=\"container\" id=\"myTopnav\">\n                    <a href=\"index.html\" class=\"logo\">Globant PodsUI</a>\n                    <nav>\n                        <ul>\n                            <li> <a href=\"#/home\">Home</a></li>\n                            <li> <a href=\"#/team\">Pod Team</a></li>\n                            <li> <a href=\"#/mision\">Mision/vision</a></li> \n                            <li> <a href=\"#/goals\">Goals</a></li>                      \n                        </ul>                       \n                    </nav>\n                     <div class=\"icon-hamburger\" onclick=\"myFunction()\">&#9776;</div>\n                </div>\n           \n        \n         \n        ";
         }
     }]);
 
     return NavBar;
 }();
+
+/*
+
+<div class="inner">
+				<a href="index.html" class="logo">Globant PodsUI</a>
+                <nav>
+                    <ul>
+                        <li> <a href="#/home">Home</a></li>
+                        <li> <a href="#/team">Pod Team</a></li>
+                        <li> <a href="#/mision">Mision/vision</a></li> 
+                        <li> <a href="#/goals">Goals</a></li>                      
+                    </ul>
+                </nav>
+            </div> 
+            */
 
 /***/ }),
 /* 6 */
@@ -367,7 +382,7 @@ var Footer = exports.Footer = function () {
     _createClass(Footer, [{
         key: "view",
         value: function view() {
-            return "             \n                <div>\n                    <div>\n                        <img src=\"https://www.globant.com/sites/default/files/static-pages/globant-light.svg\" alt=\"Globant\">\n                    </div>\n                    \n                </div>\n           \n\n        ";
+            return "             \n                \n                    <div>\n                        <img src=\"https://www.globant.com/sites/default/files/static-pages/globant-light.svg\" alt=\"Globant\">\n                    </div>\n                    \n               \n           \n\n        ";
         }
     }]);
 
@@ -402,7 +417,7 @@ var Home = exports.Home = function () {
     _createClass(Home, [{
         key: 'view',
         value: function view() {
-            return '\n                       <h1>Welcom to My PodJs!</h1>\n                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe expedita doloribus, praesentium laboriosam. Vero non eius enim, vel sunt, facere voluptates hic omnis iure consequuntur itaque impedit ipsa. Esse, exercitationem!</p>\n\n        ';
+            return '\n            <div>\n            <section class="home">\n                <div>                    \n                    <article>\n                        <header>\n                            <h1>Welcom to My PodJs!</h1>\n                        </header>\n                        <footer>\n                            <p>Integer adipiscin sem. Nullam quis massa sit amet</p>\n                        </footer>\n                        <content>\n                            <p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. \n                            Integer adipiscin sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, \n                            faucibus non, congue vel, arcu, erisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida \n                            tristique. Nunc iaculis mi in ante.\n                            </p> \n                        </content>\n                    </article> \n                    <article>\n                        <header>\n                            <h1>Welcom to My PodJs!</h1>\n                        </header>\n                        <footer>\n                            <p>Integer adipiscin sem. Nullam quis massa sit amet</p>\n                        </footer>\n                        <content>\n                            <p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. \n                            Integer adipiscin sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, \n                            faucibus non, congue vel, arcu, erisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida \n                            tristique. Nunc iaculis mi in ante.\n                            </p> \n                        </content>\n                    </article> \n                                     \n                </div>\n                <aside class="home-sidebar">\n                        <header>\n                            <h1>News in My PodJs!</h1>\n                        </header>\n                        <footer>\n                            <p>Integer adipiscin sem. Nullam quis massa sit amet</p>\n                        </footer>\n                        <content>\n                            <p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. \n                            Integer adipiscin sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, \n                            faucibus non, congue vel, arcu, erisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida \n                            tristique. Nunc iaculis mi in ante.\n                            </p> \n                        </content>\n                    </aside>\n                \n            </section>\n            </div>\n        ';
         }
     }, {
         key: 'controller',
@@ -579,7 +594,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 var misionVision = exports.misionVision = function misionVision() {
-    return "\n        <section class=\"misionvision title text-center\">\n                <div>\n                    <h1 class=\"blown-up\">Our Vision</h1>\n                     \n                    <img src=\" https://www.globant.com/sites/default/files/static-pages/node-104.jpg\" alt=\"vision-mision\">                        \n                    \n                </div>\n              \n                <div class=\"text-center\">\n                    <h3 class=\"excerpt\">WE WANT TO CHALLENGE THE STATUS QUO AND BECOME THE BEST COMPANY IN THE CREATION OF DIGITAL JOURNEYS, COMBINING THE BEST OF ENGINEERING, INNOVATION AND DESIGN.</h3>\n                    <p class=\"header-text\">Our goal is to be the leader in the creation of digital journeys that matter to millions of users.</p>\n                </div>\n                <br/>                        \n\n        </section>\n    \n    ";
+    return "\n       <div>\n        <section class=\"misionvision title text-center\">\n                <div>\n                    <h1 class=\"blown-up\">Our Vision</h1>\n                     \n                    <img src=\" https://www.globant.com/sites/default/files/static-pages/node-104.jpg\" alt=\"vision-mision\">                        \n                    \n                </div>\n              \n                <div class=\"text-center\">\n                    <h3 class=\"excerpt\">WE WANT TO CHALLENGE THE STATUS QUO AND BECOME THE BEST COMPANY IN THE CREATION OF DIGITAL JOURNEYS, COMBINING THE BEST OF ENGINEERING, INNOVATION AND DESIGN.</h3>\n                    <p class=\"header-text\">Our goal is to be the leader in the creation of digital journeys that matter to millions of users.</p>\n                </div>\n                <br/>                        \n\n        </section>\n        </div>\n    \n    ";
 };
 
 /***/ })

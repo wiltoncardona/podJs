@@ -1,5 +1,6 @@
 export const misionVision = ()=>{
     return `
+       <div>
         <section class="misionvision title text-center">
                 <div>
                     <h1 class="blown-up">Our Vision</h1>
@@ -15,6 +16,7 @@ export const misionVision = ()=>{
                 <br/>                        
 
         </section>
+        </div>
     
     `
 }

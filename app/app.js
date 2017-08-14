@@ -2,7 +2,7 @@
 
 export class App {
     constructor(){
-        this.navElement = document.getElementById('navbar');
+        this.navElement = document.getElementById('header');
         this.footerElement = document.getElementById('main-footer');
 
         this.appElement  = document.getElementById('main');

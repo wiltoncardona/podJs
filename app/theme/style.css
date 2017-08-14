@@ -1,70 +1,116 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-body{
-    
-    font-size: 15px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    line-height: 1.42857143;
-    color: #c8c8c8;
-    background-color: #272b30;
-}
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700|Pacifico");
 
-body main ,body header    {
-    margin: 1em;
-    padding: 1em;
-}
-
-main#main {
-    padding-bottom: 27%;
-}
-
-footer {
-   position:absolute;   
-   width:100%;
-   height:100px;   
-   background:#7a8288;
-   margin-bottom: 0;
-}
-
-footer.main-footer img {
-    display: block;   
-    height: auto;
-    margin: 0 auto 28px;
-    padding-top: 2em;
-}
-
-nav {       
-  background-color:  #3a3f44;
-  margin: 0;
-  padding: 2em;
-  border: 1px solid rgba(0, 0, 0, 0.6);    
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-  
-}
-nav ul li {
-    display: inline-block;
-}
-
-li > a {           
-    position: relative;
-    display: block;
-    padding: 10px 15px;
-    color: #ffffff;
-    line-height: 21px;
+body {
+    font-size: 87.5%;
+    font-family: "Lato", sans-serif;
+    line-height: 1.5;
+    text-align: left;
 }
 
 a {
     text-decoration: none;
-    background-color: transparent;
 }
 
+a:link , a:active {
+
+}
+
+a:hover,a:active{
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #e5474b;
+    text-transform: uppercase;
+}
+
+
+.body {
+    margin: 0 auto;
+    clear: both;
+}
+
+#header  {
+    background-color: #1c1c1c;
+    color: red;
+    height: 5em;
+    left: 0;
+    line-height: 5em;
+    position: fixed;   
+    top: 0;
+    width: 100%;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+
+
+#header .logo {
+    font-family: 'Pacifico', cursive;   
+    color: #e5474b;
+    font-size: 1.75em;  
+    padding: 0 4%; 
+    float:  left; 
+}
+
+#header  nav{   
+    float: right;
+}
+
+#header nav ul{
+    list-style: none;
+    margin: 0 auto;
+    padding:  0;
+}
+
+#header  nav ul li{
+    display: inline-block;;
+}
+
+#header  nav a:link , #header  nav a:visited {
+    color: #fff;    
+    padding: 26px 20px;   
+}
+
+#header  nav a:hover, #header  nav a:active,
+#header  nav .active a:link, #header  nav .active a:visited {
+    background-color: #e5474b
+}
+
+#header .icon-hamburger{
+    display: none;
+    margin-right: 5%;
+    font-size: 3em;
+}
+
+/******************* end header  *********************/
+
+#main {   
+    margin: 10% 5%;;
+}
+
+#main .home div {
+    width: 65%;
+    float: left;
+}
+
+#main .home-sidebar {
+    width: 25%;
+    float: right;    
+}
+
+content p {
+    text-align: justify;
+}
+
+/*  Team Section*/
 .team-members , .team-full {
     display: inline-flex;
 }
 
-section > div img {
+.team-members > div img {
     border-radius: 50%;
 }
 
@@ -72,14 +118,9 @@ section > div img {
     text-align: center;
 }
 
-
 .title {
     padding-bottom: 2em;
     font-size: 1.5em;
-}
-
-.team-members > div p {
-    font-size: 0.9em;
 }
 
 section.misionvision {
@@ -94,30 +135,48 @@ section.misionvision > div img{
 
 
 
-nav a:hover {
-    background-color: rgba(155, 0, 0, 0.6);
-}
 
 
-.btn-link {
-    display: inline-block;    
-    padding: 8px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #ffffff;    
-}
-
-.team-full{
-    padding: 3em;
-}
-
-.team-full div:first-child {
-       margin: 3em 3em;
+#main-footer{
+  background-color: #1c1c1c;  
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0.5rem;
+  text-align: center;
+  display: none; /* mostrar footer*/
+    
 }
 
 
 
-.team-full > div img {
-     border-radius: 0%; 
+@media only screen and (max-width: 600px) {
+        #header nav {
+            display: none;
+        }
 
+        #header .icon-hamburger{   
+            display: block;         
+            float: right;
+        }
+
+        #main {            
+            margin: 20% 2%;
+        }
+        .team-members , .team-full {
+            display: block;
+        }
+        .team-members div {
+            padding: 5%;
+        }
 }
+
+@media only screen and (max-width: 400px) and (min-width: 250px){
+    #main {            
+            margin: 40% 2%;
+        }
+}
+
+
+
