@@ -157,6 +157,10 @@ var _misionVision = __webpack_require__(10);
 
 var _contactus = __webpack_require__(12);
 
+var _canvas = __webpack_require__(13);
+
+var _robot = __webpack_require__(14);
+
 var app = new _app.App();
 var router = new _router.Router(app);
 
@@ -168,6 +172,9 @@ app.addComponent(new _team.Team());
 app.addComponent(new _person.Person());
 app.addComponent(new _misionVision.MisionVision());
 app.addComponent(new _contactus.ContactUs());
+
+var canvas = new _canvas.Canvas(125, 145, 'canvas');
+var robot = new _robot.Robot(canvas.getCanvas(), canvas.getContext());
 
 router.addRoute('home', '^$');
 router.addRoute('home', '^#/home$');
@@ -421,7 +428,7 @@ var Home = exports.Home = function () {
     _createClass(Home, [{
         key: 'view',
         value: function view() {
-            return '\n            <div>\n            <section class="home">\n                <div>                    \n                    <article>\n                        <header>\n                            <h1>Welcom to My PodJs!</h1>\n                        </header>\n                        <footer>\n                            <p>Integer adipiscin sem. Nullam quis massa sit amet</p>\n                        </footer>\n                        <content>\n                            <p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. \n                            Integer adipiscin sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, \n                            faucibus non, congue vel, arcu, erisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida \n                            tristique. Nunc iaculis mi in ante.\n                            </p> \n                        </content>\n                    </article> \n                    <article>\n                        <header>\n                            <h1>Welcom to My PodJs!</h1>\n                        </header>\n                        <footer>\n                            <p>Integer adipiscin sem. Nullam quis massa sit amet</p>\n                        </footer>\n                        <content>\n                            <p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. \n                            Integer adipiscin sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, \n                            faucibus non, congue vel, arcu, erisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida \n                            tristique. Nunc iaculis mi in ante.\n                            </p> \n                        </content>\n                    </article> \n                                     \n                </div>\n                <aside class="home-sidebar">\n                        <header>\n                            <h1>News in My PodJs!</h1>\n                        </header>\n                        <footer>\n                            <p>Integer adipiscin sem. Nullam quis massa sit amet</p>\n                        </footer>\n                        <content>\n                            <p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. \n                            Integer adipiscin sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, \n                            faucibus non, congue vel, arcu, erisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida \n                            tristique. Nunc iaculis mi in ante.\n                            </p> \n                        </content>\n                    </aside>\n                \n            </section>\n            </div>\n        ';
+            return '\n            <div>\n            <section class="home">\n                <div>                    \n                    <article>\n                        <header>\n                            <h1>Welcom to My PodJs!</h1>\n                        </header>\n                        <footer>\n                            <p>Integer adipiscin sem. Nullam quis massa sit amet</p>\n                        </footer>\n                        <content>\n                            <p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. \n                            Integer adipiscin sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, \n                            faucibus non, congue vel, arcu, erisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida \n                            tristique. Nunc iaculis mi in ante.\n                            </p> \n                        </content>\n                    </article> \n                    <article>\n                        <header>\n                            <h1>Welcom to My PodJs!</h1>\n                        </header>\n                        <footer>\n                            <p>Integer adipiscin sem. Nullam quis massa sit amet</p>\n                        </footer>\n                        <content>\n                            <p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. \n                            Integer adipiscin sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, \n                            faucibus non, congue vel, arcu, erisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida \n                            tristique. Nunc iaculis mi in ante.\n                            </p> \n                        </content>\n                    </article> \n                                     \n                </div>\n                <aside class="home-sidebar">\n                        <header>\n                            <h1>News in My PodJs!</h1>\n                        </header>\n                        <footer>\n                            <p>Integer adipiscin sem. Nullam quis massa sit amet</p>\n                        </footer>\n                        <content>\n                            <p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. \n                            Integer adipiscin sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, \n                            faucibus non, congue vel, arcu, erisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida \n                            tristique. Nunc iaculis mi in ante.\n                            </p> \n                        </content>\n                    </aside>\n                \n            </section>\n            \n            </div>\n        ';
         }
     }, {
         key: 'controller',
@@ -637,6 +644,198 @@ var ContactUs = exports.ContactUs = function () {
     }]);
 
     return ContactUs;
+}();
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Canvas = exports.Canvas = function () {
+  function Canvas(width, height, nameCanvas) {
+    _classCallCheck(this, Canvas);
+
+    this.canvas = document.getElementById(nameCanvas);
+    canvas.width = width;
+    canvas.height = height;
+    this.context = canvas.getContext('2d');
+  }
+
+  _createClass(Canvas, [{
+    key: 'getCanvas',
+    value: function getCanvas() {
+      return this.canvas;
+    }
+  }, {
+    key: 'getContext',
+    value: function getContext() {
+      return this.context;
+    }
+  }]);
+
+  return Canvas;
+}();
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Robot = exports.Robot = function () {
+	function Robot(canvas, context) {
+		_classCallCheck(this, Robot);
+
+		this.context = context;
+		this.canvas = canvas;
+		this.canvas.addEventListener("mousemove", this.sayHello.bind(this), false);
+		this.drawRobot(this.context);
+		this.sayHelloBoll = true;
+	}
+
+	_createClass(Robot, [{
+		key: 'drawRobot',
+		value: function drawRobot(context) {
+			this.drawHead(context);
+			this.drawEye(context);
+			this.drawBody(context);
+			this.drawLeftArm(context);
+			this.drawRightArm(context);
+			this.drawRightLeg(context);
+			this.drawLeftLeg(context);
+		}
+	}, {
+		key: 'drawHead',
+		value: function drawHead(context) {
+			context.beginPath();
+			context.fillStyle = '#1c1c1c';
+			context.rect(40, 5, 38, 30); // head
+			context.fill();
+			context.closePath();
+		}
+	}, {
+		key: 'drawEye',
+		value: function drawEye(context) {
+			context.beginPath();
+			context.fillStyle = '#e5474b';
+			context.arc(50, 17, 5, 0, 2 * Math.PI, false);
+			context.arc(67, 17, 5, 0, 2 * Math.PI, false);
+			context.fill();
+			context.closePath();
+		}
+	}, {
+		key: 'drawBody',
+		value: function drawBody(context) {
+			context.beginPath();
+			context.fillStyle = '#1c1c1c';
+			context.rect(33, 37, 50, 50); // body
+			context.fill();
+			context.closePath();
+		}
+	}, {
+		key: 'drawBody',
+		value: function drawBody(context) {
+			context.beginPath();
+			context.fillStyle = '#1c1c1c';
+			context.rect(33, 37, 50, 50); // body
+			context.fill();
+			context.closePath();
+		}
+	}, {
+		key: 'drawLeftArm',
+		value: function drawLeftArm(context) {
+			context.beginPath();
+			context.fillStyle = '#1c1c1c';
+			context.rect(18, 37, 12, 37); // left arm
+			context.fill();
+			context.closePath();
+		}
+	}, {
+		key: 'drawRightArm',
+		value: function drawRightArm(context) {
+			context.beginPath();
+			context.fillStyle = '#1c1c1c';
+			context.rect(86, 37, 12, 37); // right arm
+			context.fill();
+			context.closePath();
+		}
+	}, {
+		key: 'drawLeftLeg',
+		value: function drawLeftLeg(context) {
+			context.beginPath();
+			context.fillStyle = '#1c1c1c';
+			context.rect(38, 90, 16, 50); // left leg
+			context.fill();
+			context.closePath();
+		}
+	}, {
+		key: 'drawRightLeg',
+		value: function drawRightLeg(context) {
+			context.beginPath();
+			context.fillStyle = '#1c1c1c';
+			context.rect(60, 90, 16, 50); // right leg
+			context.fill();
+			context.closePath();
+		}
+	}, {
+		key: 'sayHello',
+		value: function sayHello(e) {
+			console.log(e);
+			console.log(e.x);
+			console.log(this.canvas.height);
+			console.log(this.canvas.width);
+
+			console.log(e.y <= this.canvas.height && e.x <= this.canvas.width);
+
+			//if(e.y <= this.canvas.height && e.x <= this.canvas.width ){
+			if (this.sayHelloBoll) {
+				this.clearRect(86, 37, 12, 37); // right arm
+				this.raisearm(this.context);
+
+				this.sayHelloBoll = !this.sayHelloBoll;
+			} else {
+				this.clearRect(86, 37, 37, 12);
+				this.drawRightArm(this.context);
+				this.sayHelloBoll = !this.sayHelloBoll;
+			}
+		}
+	}, {
+		key: 'clearRect',
+		value: function clearRect(x, y, w, h) {
+			this.context.clearRect(x, y, w, h);
+		}
+	}, {
+		key: 'raisearm',
+		value: function raisearm(context) {
+			context.clearRect(86, 37, 12, 37); // right arm
+			context.beginPath();
+			context.fillStyle = '#e5474b';
+			context.fillRect(86, 37, 37, 12);
+			context.fill();
+			context.closePath();
+		}
+	}]);
+
+	return Robot;
 }();
 
 /***/ })

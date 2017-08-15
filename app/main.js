@@ -9,6 +9,9 @@ import { Person } from './components/team/person/person';
 import { MisionVision } from './components/misionvision/misionVision';
 import { ContactUs } from './components/contactus/contactus';
 
+import { Canvas } from './components/logocanvas/canvas';
+import { Robot } from './components/logocanvas/robot';
+
 
 
 const app = new App();
@@ -23,7 +26,8 @@ app.addComponent(new Person());
 app.addComponent(new MisionVision());
 app.addComponent(new ContactUs());
 
-
+const canvas = new Canvas(125,145,'canvas');
+const robot = new Robot(canvas.getCanvas(),canvas.getContext());
 
 
 

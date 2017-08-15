@@ -64,6 +64,7 @@ export class Home{
                     </aside>
                 
             </section>
+            
             </div>
         `
     };
