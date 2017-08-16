@@ -171,7 +171,7 @@ app.addComponent(new _home.Home());
 app.addComponent(new _team.Team());
 app.addComponent(new _person.Person());
 app.addComponent(new _misionVision.MisionVision());
-app.addComponent(new _contactus.ContactUs());
+app.addComponent(new _contactus.ContactUs(app));
 
 var canvas = new _canvas.Canvas(125, 145, 'canvas');
 var robot = new _robot.Robot(canvas.getCanvas(), canvas.getContext());
@@ -242,6 +242,11 @@ var App = exports.App = function () {
                 this.currentComponent.controller(this.params);
             }
             this.updateView();
+        }
+    }, {
+        key: 'getComponentByName',
+        value: function getComponentByName(component) {
+            return this.componentsByName[component];
         }
     }, {
         key: 'updateView',
@@ -624,19 +629,33 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var ContactUs = exports.ContactUs = function () {
-    function ContactUs() {
+    function ContactUs(app) {
         _classCallCheck(this, ContactUs);
 
+        this.app = app;
         this.name = 'contactus';
         this.model = {
             home: []
         };
+
+        this.methods = {
+            sendMessage: function sendMessage() {
+                //event.preventDefault();
+                console.log('save!');
+            }
+        };
     }
 
     _createClass(ContactUs, [{
+        key: 'sendMessage',
+        value: function sendMessage() {
+            //event.preventDefault();
+            console.log('save!');
+        }
+    }, {
         key: 'view',
         value: function view() {
-            return '\n                <div class="container">\n                    <header>\n\t\t\t\t\t\t<h2>Get in Touch</h2>\n\t\t\t\t\t</header>\n                    <form action="">\n                        <label for="fname"> Name</label>\n                        <input type="text" id="fname" name="firstname" placeholder="Your name..">\n\n                        <label for="email">Email</label>\n                        <input type="text" id="email" name="lastname" placeholder="Your email..">\n\n                        <label for="message">Message</label>\n                        <textarea id="message" name="message" placeholder="Write something.." style="height:200px"></textarea>\n\n                        <input type="submit" value="Send Message">\n                    </form>\n                </div>\n\n        ';
+            return '\n                <div class="container"> \n                    <header>\n\t\t\t\t\t\t<h2>Get in Touch</h2>\n\t\t\t\t\t</header>\n                    <form action="post" onsubmit="this.app.getComponentByName(\'contactus\').sendMessage(event)" >\n                        <label for="fname"> Name</label>\n                        <input type="text" id="fname" name="firstname" placeholder="Your name..">\n\n                        <label for="email">Email</label>\n                        <input type="text" id="email" name="lastname" placeholder="Your email..">\n\n                        <label for="message">Message</label>\n                        <textarea id="message" name="message" placeholder="Write something.." style="height:200px"></textarea>\n\n                        <input type="button" onclick="sendMessage()" value="Send Message">\n                    </form>\n                </div>\n\n        ';
         }
     }, {
         key: 'controller',

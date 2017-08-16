@@ -24,7 +24,8 @@ app.addComponent(new Home());
 app.addComponent(new Team());
 app.addComponent(new Person());
 app.addComponent(new MisionVision());
-app.addComponent(new ContactUs());
+app.addComponent(new ContactUs(app));
+
 
 const canvas = new Canvas(125,145,'canvas');
 const robot = new Robot(canvas.getCanvas(),canvas.getContext());

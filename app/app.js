@@ -37,6 +37,10 @@ export class App {
         this.updateView();
     }
 
+    getComponentByName(component){
+      return this.componentsByName[component];
+    }
+
     updateView(){
         if(this.currentComponent){
             this.appElement.innerHTML = this.currentComponent.view();
