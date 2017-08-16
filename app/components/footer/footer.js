@@ -3,7 +3,7 @@
 export class Footer{
 
     constructor(){
-
+        this.name ='mainFooter';
     }
 
     view(){
