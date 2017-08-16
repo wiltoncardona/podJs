@@ -6,7 +6,7 @@ export class MisionVision{
     constructor(){
         this.name ='misionVision';
         this.model =  {
-            home : []
+            mision : []
         }
     }    
 
