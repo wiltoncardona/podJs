@@ -17,6 +17,7 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
             },
             {
                  test: /\.js$/,
+                 
                  loader: 'babel-loader',
                  query: {
                      presets: ['es2015']
