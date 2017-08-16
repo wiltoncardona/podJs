@@ -17,7 +17,7 @@ export class Home{
                 <div>                    
                     <article>
                         <header>
-                            <h1>Welcom to My PodJs!</h1>
+                            <h1>Welcome to My PodJs!</h1>
                         </header>
                         <footer>
                             <p>Integer adipiscin sem. Nullam quis massa sit amet</p>

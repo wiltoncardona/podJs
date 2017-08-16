@@ -393,12 +393,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var Footer = exports.Footer = function () {
     function Footer() {
         _classCallCheck(this, Footer);
+
+        this.name = 'mainFooter';
     }
 
     _createClass(Footer, [{
-        key: "view",
+        key: 'view',
         value: function view() {
-            return "             \n                \n                    <div>\n                        <img src=\"https://www.globant.com/sites/default/files/static-pages/globant-light.svg\" alt=\"Globant\">\n                    </div>\n                    \n               \n           \n\n        ";
+            return '             \n                \n                    <div>\n                        <img src="https://www.globant.com/sites/default/files/static-pages/globant-light.svg" alt="Globant">\n                    </div>\n                    \n               \n           \n\n        ';
         }
     }]);
 
@@ -433,7 +435,7 @@ var Home = exports.Home = function () {
     _createClass(Home, [{
         key: 'view',
         value: function view() {
-            return '\n            <div>\n            <section class="home">\n                <div>                    \n                    <article>\n                        <header>\n                            <h1>Welcom to My PodJs!</h1>\n                        </header>\n                        <footer>\n                            <p>Integer adipiscin sem. Nullam quis massa sit amet</p>\n                        </footer>\n                        <content>\n                            <p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. \n                            Integer adipiscin sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, \n                            faucibus non, congue vel, arcu, erisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida \n                            tristique. Nunc iaculis mi in ante.\n                            </p> \n                        </content>\n                    </article> \n                    <article>\n                        <header>\n                            <h1>Welcom to My PodJs!</h1>\n                        </header>\n                        <footer>\n                            <p>Integer adipiscin sem. Nullam quis massa sit amet</p>\n                        </footer>\n                        <content>\n                            <p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. \n                            Integer adipiscin sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, \n                            faucibus non, congue vel, arcu, erisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida \n                            tristique. Nunc iaculis mi in ante.\n                            </p> \n                        </content>\n                    </article> \n                                     \n                </div>\n                <aside class="home-sidebar">\n                        <header>\n                            <h1>News in My PodJs!</h1>\n                        </header>\n                        <footer>\n                            <p>Integer adipiscin sem. Nullam quis massa sit amet</p>\n                        </footer>\n                        <content>\n                            <p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. \n                            Integer adipiscin sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, \n                            faucibus non, congue vel, arcu, erisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida \n                            tristique. Nunc iaculis mi in ante.\n                            </p> \n                        </content>\n                    </aside>\n                \n            </section>\n            \n            </div>\n        ';
+            return '\n            <div>\n            <section class="home">\n                <div>                    \n                    <article>\n                        <header>\n                            <h1>Welcome to My PodJs!</h1>\n                        </header>\n                        <footer>\n                            <p>Integer adipiscin sem. Nullam quis massa sit amet</p>\n                        </footer>\n                        <content>\n                            <p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. \n                            Integer adipiscin sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, \n                            faucibus non, congue vel, arcu, erisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida \n                            tristique. Nunc iaculis mi in ante.\n                            </p> \n                        </content>\n                    </article> \n                    <article>\n                        <header>\n                            <h1>Welcom to My PodJs!</h1>\n                        </header>\n                        <footer>\n                            <p>Integer adipiscin sem. Nullam quis massa sit amet</p>\n                        </footer>\n                        <content>\n                            <p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. \n                            Integer adipiscin sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, \n                            faucibus non, congue vel, arcu, erisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida \n                            tristique. Nunc iaculis mi in ante.\n                            </p> \n                        </content>\n                    </article> \n                                     \n                </div>\n                <aside class="home-sidebar">\n                        <header>\n                            <h1>News in My PodJs!</h1>\n                        </header>\n                        <footer>\n                            <p>Integer adipiscin sem. Nullam quis massa sit amet</p>\n                        </footer>\n                        <content>\n                            <p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. \n                            Integer adipiscin sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, \n                            faucibus non, congue vel, arcu, erisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida \n                            tristique. Nunc iaculis mi in ante.\n                            </p> \n                        </content>\n                    </aside>\n                \n            </section>\n            \n            </div>\n        ';
         }
     }, {
         key: 'controller',
@@ -629,20 +631,12 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var ContactUs = exports.ContactUs = function () {
-    function ContactUs(app) {
+    function ContactUs() {
         _classCallCheck(this, ContactUs);
 
-        this.app = app;
         this.name = 'contactus';
         this.model = {
-            home: []
-        };
-
-        this.methods = {
-            sendMessage: function sendMessage() {
-                //event.preventDefault();
-                console.log('save!');
-            }
+            contact: []
         };
     }
 
