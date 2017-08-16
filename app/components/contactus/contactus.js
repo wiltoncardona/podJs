@@ -3,28 +3,17 @@
 export class ContactUs{
     
 
-    constructor(app){
-        this.app = app;
+    constructor(){
         this.name ='contactus';
         this.model =  {
-            home : []
+            contact : []
         }
+    }
 
-        this.methods = {
-                sendMessage() {
-                    //event.preventDefault();
-                    console.log('save!');
-                
-                }
-        }
-
-        
-
-
-    } 
+           
 
     sendMessage() {
-            //event.preventDefault();
+             //event.preventDefault();
             console.log('save!');
                 
     }
