@@ -13,12 +13,13 @@ module.exports = function(config) {
             'test-context.js': ['webpack']
         },
         webpack: {
-            module: {
+            module: {                 
                 loaders: [
                     { 
                         test: /\.js/, 
                         exclude: /node_modules/, 
-                        loader: 'babel-loader' }
+                        loader: 'babel-loader' 
+                    }
                 ]
             },
             watch: true
@@ -26,10 +27,19 @@ module.exports = function(config) {
         webpackServer: {
             noInfo: true
         },
-        // anything named karma-* is normally auto included so you probably dont need this
-        plugins: ['karma-coverage-istanbul-reporter'],
-
-        reporters: ['coverage-istanbul'],
+        
+        reporters: [ 'dots', 'coverage' ], //report results in this format
+        coverageReporter: {
+            reporters: [
+                {
+                    type: 'text-summary'
+                },
+                {
+                    type: 'html',
+                    dir: 'build/reports/coverage'
+                }
+            ]
+        },
        
     });
 };
